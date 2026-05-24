@@ -23,8 +23,9 @@ auto matmul(
 }
 
 template <typename T, std::size_t R, std::size_t C>
-constexpr std::array<std::array<T, R>, C>
-transpose(const std::array<std::array<T, C>, R>& in) {
+constexpr auto transpose(
+    const std::array<std::array<T, C>, R>& in) -> std::array<std::array<T, R>, C> 
+{
     std::array<std::array<T, R>, C> out{};
     for (std::size_t i = 0; i < R; ++i)
         for (std::size_t j = 0; j < C; ++j)

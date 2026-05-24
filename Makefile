@@ -1,7 +1,7 @@
 CXX        := g++
 CXXSTD     := -std=c++23
 WARN       := -Wall -Wextra -Wpedantic
-OPT        := -O2 -g
+OPT        := -O3 -g
 
 GTEST_DIR  := third_party/googletest/googletest
 GTEST_INC  := -I$(GTEST_DIR)/include -I$(GTEST_DIR)
