@@ -31,6 +31,8 @@ private:
   // RmsNorms
   std::array<F, DModel> gamma_attention;
   std::array<F, DModel> gamma_ff;
+
+public:
 };
 
 } // namespace transformer

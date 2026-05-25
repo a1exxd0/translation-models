@@ -36,4 +36,11 @@ auto rms_norm(std::array<F, N> &a, const std::array<F, N> &gamma) -> void {
   }
 }
 
+template <std::floating_point F, std::size_t N>
+auto relu(std::array<F, N> &a) -> void {
+  for (std::size_t i = 0; i < N; i++) {
+    a[i] = std::max(static_cast<F>(0), a[i]);
+  }
+}
+
 } // namespace math
