@@ -1,3 +1,5 @@
+#pragma once
+
 #include "math/activation.h"
 #include "math/matrix.h"
 #include <array>
@@ -12,10 +14,10 @@ auto feed_forward(const std::array<F, DModel> &in,
                   const std::array<std::array<F, DModel>, DFF> &W2,
                   const std::array<F, DModel> &B2) -> std::array<F, DModel> {
   auto inner = math::matmul(in, W1);
-  math::add_inplace(B1, inner);
+  math::add_inplace(inner, B1);
   math::relu(inner);
   auto outer = math::matmul(inner, W2);
-  math::add_inplace(B2, outer);
+  math::add_inplace(outer, B2);
   return outer;
 }
 
