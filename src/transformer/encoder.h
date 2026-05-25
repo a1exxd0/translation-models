@@ -13,13 +13,24 @@ public:
   static constexpr std::size_t DK = DModel / NumHeads;
 
 private:
-  std::array<std::tuple<std::array<std::array<F, DK>, DModel>,
-                        std::array<std::array<F, DK>, DModel>,
-                        std::array<std::array<F, DK>, DModel>>,
-             NumHeads>
-      head_weights;
+  struct HeadWeights {
+    std::array<std::array<F, DK>, DModel> WQ;
+    std::array<std::array<F, DK>, DModel> WK;
+    std::array<std::array<F, DK>, DModel> WV;
+  };
 
+  std::array<HeadWeights, NumHeads> head_weights;
   std::array<std::array<F, DModel>, DModel> output_projection;
+
+  // Feed forward
+  std::array<std::array<F, DFF>, DModel> W1;
+  std::array<F, DFF> B1;
+  std::array<std::array<F, DModel>, DFF> W2;
+  std::array<F, DModel> B2;
+
+  // RmsNorms
+  std::array<F, DModel> gamma_attention;
+  std::array<F, DModel> gamma_ff;
 };
 
 } // namespace transformer

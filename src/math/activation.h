@@ -27,7 +27,7 @@ auto softmax(std::array<F, N> &a) -> void {
 
 template <std::floating_point F, std::size_t N>
 auto rms_norm(std::array<F, N> &a, const std::array<F, N> &gamma) -> void {
-  constexpr F inv_n = F{1} / static_cast<F>(N);
+  const F inv_n = F{1} / static_cast<F>(N);
   const F ms = inv_n * std::accumulate(a.begin(), a.end(), F{0},
                                        [](F acc, F v) { return acc + v * v; });
   const F inv_rms = F{1} / std::sqrt(ms + F{1e-5});
